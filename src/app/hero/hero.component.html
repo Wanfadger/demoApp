@@ -1,0 +1,101 @@
+<div class="flex">
+    <div id="sidenav" class="w-[103px] h-full"></div>
+
+
+    <section id="hero" class="w-full">
+        <div id="container"
+            class=" backdrop-filter backdrop-opacity-80 bg-cover bg-center  bg-[url('assets/hero-container-bg-image.jpeg')]  h-[208px] w-full">
+            <div id="navigation" class="flex justify-between items-center bg-white py-[4px] px-[24px]">
+                <div class="flex h-[66px] w-3/4 items-center">
+                    <div class="flex gap-[10px]">
+                        <div class="flex items-center">
+                            <span class="px-[16px]"><mat-icon aria-hidden="false" aria-label="Example home icon"
+                                    fontIcon="west" class="text-orange-400"></mat-icon></span>
+                            <div
+                                class="w-[78px] h-[20px] opacity-[70%] font-[Poppins] font-[400] text-[14px] leading-[20px] text-center text-[#0B2936] ">
+                                Dashboard</div>
+                        </div>
+                        <span class="px-[12px]">/</span>
+                        <a
+                            class="w-[44px] h-[20px] opacity-[70%] font-[Poppins] font-[400] text-[14px] leading-[20px] text-center text-[#0B2936] ">Link
+                            1</a>
+                        <span class="px-[12px]">/</span>
+                        <a
+                            class="w-[44px] h-[20px] font-[Poppins] font-[700] text-[14px] leading-[20px] tracking-[0.25px] text-center text-[#0B2936] ">Link
+                            2</a>
+
+                    </div>
+                </div>
+
+                <!--user-->
+                <app-user></app-user>
+
+            </div>
+
+            <div id="main" class="w-full h-[134px] p-[32px]">
+                <div id="title" class="w-full h-[70px] flex flex-col gap-[2px]">
+                    <div class="w-full h-[48px] pt-[16px] px-0 pb-0">
+                        <div
+                            class="w-[700px] h-[32px] font-[Poppins] font-[400] text-[32px] leading-[32px] tracking-[0.25px] text-[#0B2936] ">
+                            Profolio</div>
+                    </div>
+
+                    <div class="flex justify-between">
+                        <div id="subtitle" class="h-[20px]">
+                            <div class="w-[700px] h-[20px] opacity-[70%] bg-blend-multiply blend ">Lorem ipsum dolor sit
+                                amet consectetur. At euismod eleifend elit sodales dignissim dolor quis.</div>
+                        </div>
+
+                        <div class="flex gap-2 justify-end">
+                            <button
+                                class="w-[145px] h-[40px] rounded-[4px] border-[0.5px] bg-white border-[#0B2936] py-0 px-[16px] text-[#00000] ">Invita
+                                un amico</button>
+                            <button
+                                class="w-[90px] h-[40px] rounded-[4px] border-[0.5px] bg-[#EF8450] py-0 px-[16px] text-[#FFFFFF] ">Primary</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="car-tab-bar">
+            <div class="flex items-center gap-8">
+                <div class="w-[32px]  h-[64px] px-[16px] py-2">
+                    <mat-icon>arrow_back_ios</mat-icon>
+                </div>
+
+                <mat-tab-group class="w-full" mat-stretch-tabs="false" mat-align-tabs="start">
+                    <mat-tab *ngFor="let tab of tabs">
+                        <ng-template mat-tab-label>
+                           <div class="flex gap-2 items-center">
+                            <mat-icon [ngClass]="tab.iconColor">{{tab.icon}}</mat-icon>
+                            <span>{{tab.title}}</span>
+                           </div>
+                          </ng-template>
+                        Content
+                    </mat-tab>
+                </mat-tab-group>
+
+
+
+                <div class="w-[32px]  h-[64px] px-[16px] py-2 mr-5">
+                    <mat-icon>arrow_forward_ios</mat-icon>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </section>
+
+
+
+
+
+</div>
