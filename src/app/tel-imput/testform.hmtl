@@ -153,3 +153,175 @@
     {{ "Indietro" | translate }}
   </button>
 </div>
+
+export function emailValidator(emailPattern: RegExp): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const match = emailPattern.test(control.value) || '';
+    return !match ? { invalidEmail: "e-mail non valido"} : null;
+  };
+}
+
+export function phoneValidator(phonePattern: RegExp): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const match = phonePattern.test(control.value);
+    return !match ? { invalidPhone: "numero di telefono invalido"} : null;
+  };
+}
+
+export function webSiteValidator(webSitePattern: RegExp): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const match = webSitePattern.test(control.value);
+    return !match ? { invalidUrl: "URL non valido"} : null;
+  };
+
+
+
+
+===========================================================================================
+
+form!: FormGroup;
+  @Input() profileAdditionalData!: ProfileAdditionalData;
+  @Input() animalCategories!: AnimalCategory[];
+  @Output() favoriteAnimalsChanged = new EventEmitter<any>();
+  public animalBreeds!: AnimalBreed[];
+  @Output() profileUpdated = new EventEmitter<void>();
+  public initialAnimalCategoryData: any = [];
+  animalCategorySelectionData: AnimalCategory[] = [];
+
+
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private _profileService: ProfileService
+  ) {}
+
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      // operationalAddress: [''],
+      headquarterPhoneNumber: ['',],
+      vatCode: [''],
+      // taxCode: [''],
+      companyMail: [
+        '',
+        [
+          Validators.email,
+          emailValidator(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
+        ],
+      ],
+      pec: [
+        '',
+        [
+          Validators.email,
+          emailValidator(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
+        ],
+      ],
+      webSite: [
+        '',
+        [
+          webSiteValidator(/^(https?:\/\/|http:|www\.)\S*|^$/),
+          Validators.pattern(/^(https?:\/\/|http:|www\.)\S*|^$/),
+        ],
+      ],
+
+      specializationAnimalsCategoryJSON: [[]],
+      registeredCode:['']
+    });
+
+    this.form.setValidators(this.validateAtLeastOneNotEmptyAndInvalid());
+
+    this.getProfileAdditionalData();
+
+    
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (
+      changes['profileAdditionalData']
+    ) {
+      this.getProfileAdditionalData();
+    }
+  }
+
+  getProfileAdditionalData(): void {
+    this._profileService.getProfileAdditionalData().subscribe({
+      next: (profileAdditionalData: ProfileAdditionalData[]): void => {
+        this.profileAdditionalData =  profileAdditionalData[0]
+        this.initialAnimalCategoryData = profileAdditionalData[0]?.specializationAnimalsCategoryJSON;
+        this.form.patchValue({
+           headquarterPhoneNumber:profileAdditionalData[0]?.headquarter_phone_number,
+          vatCode: profileAdditionalData[0]?.vatCode,
+          companyMail: profileAdditionalData[0]?.comapanyMail,
+          pec: profileAdditionalData[0]?.pec,
+          webSite: profileAdditionalData[0]?.webSite,
+          registeredCode: profileAdditionalData[0]?.registeredCode,
+          specializationAnimalsCategoryJSON:
+            profileAdditionalData[0]?.specializationAnimalsCategoryJSON,
+        });
+      },
+    });
+  }
+
+  submit(): void {
+    const formValue = { ...this.form.value };
+ 
+
+    const finalFormVlaue = {
+      ...this.profileAdditionalData, 
+      ...formValue,
+      specializationAnimalsCategoryJSON: this.animalCategorySelectionData.map(
+        (item) => item.id
+      ),
+   }
+  
+    this.profileUpdated.emit();
+    this._profileService.createProfileAdditionalData(finalFormVlaue);
+  }
+
+  // getAnimalBreeds(values: string[]): void {
+  //   if (values && values.length !== 0) {
+  //     this._profileService.getAnimalBreeds(JSON.stringify(values)).subscribe({
+  //       next: (animalBreeds: AnimalBreed[]): void => {
+  //         this.animalBreeds = animalBreeds;
+  //       },
+  //     });
+  //   }
+  // }
+
+  control(key: string): FormControl {
+    
+    return this.form.get(key) as FormControl;
+  }
+
+  handleSelectedDataChange(selectedData: AnimalCategory[]): void {
+    this.animalCategorySelectionData = selectedData;
+    // const newIds: string[] = selectedData.map((item) => `${item.id}`);
+    // this.getAnimalBreeds(newIds);
+  }
+
+
+  validateAtLeastOneNotEmptyAndInvalid():ValidatorFn {
+    return (abstractControl: AbstractControl):ValidationErrors | null => {
+      const formGroup:FormGroup = abstractControl as FormGroup;
+      // ATleast one controle should not be empty
+      const controlNames = Object.keys(formGroup.controls)
+      const atleastOneIsValid = controlNames.some(controlName => {
+        const control = formGroup.get(controlName) as FormControl
+        return control.value != null && control.value.length != 0 
+      })
+
+      return atleastOneIsValid? null : { atLeastOneShouldNotBeEmpty: "all optional fields are empty" }
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
