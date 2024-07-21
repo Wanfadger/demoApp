@@ -1,0 +1,32 @@
+<div style="margin: 50px">
+    <form [formGroup]="phoneFormGroup" class="flex flex-col">
+        <mat-form-field>
+            <ngx-mat-input-tel [cssClass]="'custom'" [preferredCountries]="['us', 'ca']" enablePlaceholder enableSearch
+                [formControl]="control('phone')" describedBy="phoneInput" #p maxLength="20"></ngx-mat-input-tel>
+            <mat-hint>e.g. {{ p.selectedCountry.placeHolder }}</mat-hint>
+        </mat-form-field>
+
+        <div *ngIf="control('phone').invalid &&(control('phone').dirty ||control('phone').touched)">
+            <mat-error *ngIf="control('phone').errors?.['validatePhoneNumber']">
+                Invalid Number
+            </mat-error>
+        </div>
+
+        <mat-form-field>
+            <input matInput placeholder="email" formControlName="email">
+        </mat-form-field>
+
+        <div *ngIf="control('email').invalid &&(control('email').dirty ||control('email').touched)">
+            <mat-error *ngIf="control('email').errors?.['pattern']">
+                Invalid Email
+            </mat-error>
+        </div>
+
+
+        <div class="flex justify-between p-2">
+            <button type="reset" mat-raised-button color="warn" (click)="onReset()">Reset</button>
+            <button mat-raised-button [ngClass]="{'!bg-blue-950 !text-white':phoneFormGroup.valid}" disabled
+                (click)="onSubmit()">Submit</button>
+        </div>
+
+    </form>

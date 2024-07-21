@@ -9,12 +9,18 @@ import {MatIconModule} from '@angular/material/icon'
 import { HeroComponent } from './hero/hero.component';
 import { UserComponent } from './hero/user/user.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { TelIMputComponent } from './tel-imput/tel-imput.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { NgxMatInputTelComponent } from 'ngx-mat-input-tel';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroComponent,
-    UserComponent
+    UserComponent,
+    TelIMputComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +28,11 @@ import {MatTabsModule} from '@angular/material/tabs';
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    NgxMatInputTelComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
