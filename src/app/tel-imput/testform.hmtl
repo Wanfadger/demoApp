@@ -1,0 +1,155 @@
+<div class="flex mt-8 md:justify-end md:m-8">
+  <form class="grid grid-cols-1 gap-6 p-4 w-full sm:w-full md:grid-cols-2 -mt-12" [formGroup]="form"
+    (ngSubmit)="submit()">
+    <!-- Operational Headquarters Telephone -->
+    <div class="flex flex-col mr-4">
+      <label [ngClass]="'text-white' | isDark:''" for="operationalTelephone"
+        class="text-sm font-medium text-gray-700 dark:text-gray-400" [ngClass]="'text-white' | isDark:''">
+        {{ 'Telefono Sede Operativa' | translate }}
+      </label>
+
+      <!-- #phone -->
+      <mat-form-field class="block w-full mt-1 mb-2">
+        <ngx-mat-input-tel matInput [enablePlaceholder]="true" [preferredCountries]="['it', 'gb']"
+          [enablePlaceholder]="true" [ngClass]="'text-black' | isDark:''" [enableSearch]="true"
+          name="headquarterPhoneNumber" describedBy="phoneInput" formControlName="headquarterPhoneNumber"
+          [ngClass]="'bg-white' | isDark:''"></ngx-mat-input-tel>
+      </mat-form-field>
+
+      <div *ngIf="
+              control('headquarterPhoneNumber').invalid &&
+              (control('headquarterPhoneNumber').dirty || control('headquarterPhoneNumber').touched)
+            " class="alert alert-danger">
+        <mat-error *ngIf="control('headquarterPhoneNumber')?.errors">{{
+          "Numero di telefono invalido" | translate
+          }}</mat-error>
+
+      </div>
+
+
+    </div>
+
+    <!-- VAT Number -->
+    <div class="flex flex-col mr-4">
+      <label [ngClass]="'text-white' | isDark:''" for="vatNumber"
+        class="text-sm font-medium text-gray-700 dark:text-gray-400">{{ 'Partita IVA' | translate }}</label>
+
+      <mat-form-field class="block w-full mt-1 mb-2">
+        <input matInput id="vatNumber" type="text" formControlName="vatCode"
+          placeholder="Inserisci la tua partita IVA" />
+      </mat-form-field>
+    </div>
+
+    <!-- Company Email -->
+    <div class="flex flex-col mr-4">
+      <label [ngClass]="'text-white' | isDark:''" for="companyEmail"
+        class="text-sm font-medium text-gray-700 dark:text-gray-400">{{ 'E-mail aziendale' | translate }}</label>
+
+      <mat-form-field class="block w-full mt-1 mb-2">
+        <input matInput id="companyEmail" type="email" formControlName="companyMail"
+          placeholder="Inserisci la tua email aziendale" />
+      </mat-form-field>
+      <div *ngIf="
+          control('companyMail').invalid &&
+          (control('companyMail').dirty || control('companyMail').touched)
+        " class="alert alert-danger">
+        <mat-error *ngIf="control('companyMail').errors?.['invalidEmail']">
+          {{control('companyMail').errors?.['invalidEmail'] | translate}}
+        </mat-error>
+      </div>
+
+
+      <!--            <button type="button" (click)="sendConfirmationEmail('companyEmail')" class="mt-1 text-xs text-blue-500">Send confirmation email</button>-->
+    </div>
+
+    <!-- PEC -->
+    <div class="flex flex-col mr-4">
+      <label [ngClass]="'text-white' | isDark:''" for="pecEmail"
+        class="text-sm font-medium text-gray-700 dark:text-gray-400">PEC</label>
+
+      <mat-form-field class="block w-full mt-1 mb-2">
+        <input matInput id="pecEmail" type="email" formControlName="pec" placeholder="Inserisci la tua PEC" />
+      </mat-form-field>
+      <div *ngIf="
+          control('pec').invalid &&
+          (control('pec').dirty || control('pec').touched)
+        " class="alert alert-danger">
+        <mat-error *ngIf="control('pec').errors?.['invalidEmail']">
+          {{control('pec').errors?.['invalidEmail'] | translate}}
+        </mat-error>
+      </div>
+
+
+
+      <!--            <button type="button" (click)="sendConfirmationEmail('pecEmail')" class="mt-1 text-xs text-blue-500">Send confirmation email</button>-->
+    </div>
+
+    <!-- Website -->
+    <div class="flex flex-col mr-4">
+      <label [ngClass]="'text-white' | isDark:''" for="website"
+        class="text-sm font-medium text-gray-700 dark:text-gray-400">{{ 'Sito web' | translate }}</label>
+
+      <mat-form-field class="block w-full mt-1 mb-2">
+        <input matInput id="website" type="url" formControlName="webSite"
+          placeholder="Inserisci l'URL del tuo sito web professionale" />
+      </mat-form-field>
+      <div *ngIf="
+          control('webSite').invalid &&
+          (control('webSite').dirty || control('webSite').touched)
+        " class="alert alert-danger">
+        <mat-error *ngIf="control('webSite').errors?.['invalidUrl']">
+          {{control('webSite').errors?.['invalidUrl'] | translate}}
+        </mat-error>
+      </div>
+      {{control('webSite').errors |json}}
+
+    </div>
+
+    <!-- Register Registration Code -->
+    <div class="flex flex-col mr-4">
+      <label [ngClass]="'text-white' | isDark:''" for="registerCode"
+        class="text-sm font-medium text-gray-700 dark:text-gray-400">{{ 'Registrati Codice di registrazione' |
+        translate}}</label>
+
+      <mat-form-field class="block w-full mt-1 mb-2">
+        <input matInput id="registerCode" type="text" formControlName="registeredCode"
+          placeholder="Inserisci il codice di registrazione del registro" />
+
+      </mat-form-field>
+      <!-- <a href="https://www.fnovi.it" class="mt-1 text-xs text-blue-500" target="_blank">FNOVI - Professional Profile</a> -->
+
+    </div>
+
+    <!-- Specializations and Animals of Interest -->
+    <!-- <div> -->
+    <div class="flex flex-col mr-4">
+      <label [ngClass]="'text-white' | isDark:''" for="website"
+        class="text-sm font-medium text-gray-700 dark:text-gray-400">{{ 'Specializzazioni e animali di interesse' |
+        translate }}</label>
+      <multi-select [initialseletionData]="initialAnimalCategoryData"
+        (selectedDataChange)="handleSelectedDataChange($event)"></multi-select>
+    </div>
+    <!-- </div> -->
+
+    <!-- Submit Button  [ngClass]="{ 'bg-orange-500': form.valid }" [disabled]="form.invalid" -->
+    <div class="col-span-1 text-right md:col-span-2">
+      <button mat-raised-button color="primary" type="submit"
+        class="w-32 px-4 py-2 text-white bg-opacity-75 rounded-l shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        [ngClass]="{ 'bg-orange-500': form.valid }" [disabled]="form.invalid">
+        Save
+      </button>
+    </div>
+    {{form.value |json}}
+    <br>
+    {{form.valid }}
+    <br>
+    {{form.errors |json }}
+  </form>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+  <button mat-raised-button matStepperPrevious type="button" color="primary">
+    <mat-icon matButtonIcon>arrow_back_ios</mat-icon>
+    {{ "Indietro" | translate }}
+  </button>
+</div>
