@@ -20,6 +20,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider'
 import {MatRadioModule} from '@angular/material/radio';
 import {MatChipsModule} from '@angular/material/chips';
+import { SigaloComponent } from './sigalo/sigalo.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {MatChipsModule} from '@angular/material/chips';
     HeroComponent,
     UserComponent,
     TelIMputComponent,
-    AnnunciComponent
+    AnnunciComponent,
+    SigaloComponent
   ],
   imports: [
     BrowserModule,
