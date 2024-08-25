@@ -25,7 +25,7 @@
 
         <div class="flex justify-between p-2">
             <button type="reset" mat-raised-button color="warn" (click)="onReset()">Reset</button>
-            <button mat-raised-button [ngClass]="{'!bg-blue-950 !text-white':phoneFormGroup.valid}" disabled
+            <button mat-raised-button [ngClass]="{'!bg-blue-950 !text-white':phoneFormGroup.valid}" [disabled]="phoneFormGroup.invalid"
                 (click)="onSubmit()">Submit</button>
         </div>
 
