@@ -1,0 +1,264 @@
+<section class="container mx-auto">
+    <div class="flex gap-8 rounded-md py-8 justify-center border-solid border-2 items-center border-[#E7E7E7]">
+        <div class="flex flex-col gap-2 border-solid w-1/4">
+            <mat-label class="text-sm font-poppins font-[600] leading-[18px] text-[#262626] ">Cosa cerchi?</mat-label>
+            <mat-form-field appearance="outline" class="w-full">
+                <mat-icon matPrefix>search</mat-icon>
+                <input matInput [placeholder]="'Uova Pollaio, Veterinario'" class="w-full">
+            </mat-form-field>
+        </div>
+
+
+        <div class="flex flex-col gap-2 border-solid w-1/4">
+            <mat-label class="text-sm font-poppins font-[600] leading-[18px] text-[#262626] ">Favorite food</mat-label>
+            <mat-form-field>
+                <mat-select [placeholder]="'Tutte le tipologie'" class="w-full">
+                    <mat-option *ngFor="let food of ['foods' , 'ggv']" [value]="food">
+                        {{food}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="flex flex-col gap-2 border-solid w-1/4">
+            <mat-label class="text-sm font-poppins font-[600] leading-[18px] text-[#262626] ">Dove?</mat-label>
+            <mat-form-field appearance="outline" class="w-full">
+                <mat-icon matPrefix>location_on</mat-icon>
+                <input matInput [placeholder]="'Tutta italia'" class="w-full">
+                <mat-icon matSuffix>close</mat-icon>
+            </mat-form-field>
+        </div>
+        <button class="h-[48px] rounded-[4px] py-[8px] px-[20px] bg-[#CB4A1B] text-white">Cerca</button>
+
+    </div>
+
+    <!--breadcrumb --->
+    <div class="flex gap-1 mt-4">
+        <a class="font-[400] font-poppins text-sm leading-[21px]  text-[#757A2E]">Home</a>
+        <mat-icon>chevron_right</mat-icon>
+        <a class="font-[400] font-poppins text-sm leading-[21px]  text-[#757A2E]">Annunci</a>
+    </div>
+
+    <div class="flex gap-10 mt-8">
+        <div class="w-[240px] flex flex-col gap-6">
+            <div class="font-poppins px-2  font-[600] 
+            text-[24px] leading-[36px] text-[#262626] ">Filtri di recerca
+            </div>
+
+            <div class="flex flex-col gap-4 px-2">
+                <div class="font-poppins font-[600] text-[16px] 
+                leading-[24px] tracking-[0.25%] text-[#262626]">Restringi ricerca</div>
+                <div class="flex justify-between">
+                    <span class="font-[400] text-sm leading-[21px] text-[#262626]">Cerca solo nel titolo</span>
+                    <mat-slide-toggle></mat-slide-toggle>
+                </div>
+            </div>
+
+
+            <mat-divider></mat-divider>
+
+            <div class="flex justify-between px-2">
+                <span
+                    class="font-poppins font-[600] text-[16px] p-1 leading-[24px] tracking-[0.25%] text-[#262626] ">Tipo
+                    di annuncio</span>
+                <mat-icon>close</mat-icon>
+            </div>
+
+            <div class="px-2">
+                <mat-radio-group labelPosition="before"
+                    class="flex flex-col  border border-solid border-[#D1D1D1] rounded-md">
+                    <div class="flex justify-between px-4 py-2">
+                        <div>Vendo</div>
+                        <mat-radio-button value="1"></mat-radio-button>
+                    </div>
+
+                    <div class="flex justify-between px-4 py-2">
+                        <div>Compro</div>
+                        <mat-radio-button value="1"></mat-radio-button>
+                    </div>
+
+                    <div class="flex justify-between px-4 py-2">
+                        <div>Cerco</div>
+                        <mat-radio-button value="1"></mat-radio-button>
+                    </div>
+
+                    <div class="flex justify-between px-4 py-2">
+                        <div>Scambio</div>
+                        <mat-radio-button value="1"></mat-radio-button>
+                    </div>
+
+                    <div class="flex justify-between px-4 py-2">
+                        <div>Regalo</div>
+                        <mat-radio-button value="1"></mat-radio-button>
+                    </div>
+
+                </mat-radio-group>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="flex flex-col gap-2  px-2">
+                <mat-label class="text-sm font-poppins font-[600] leading-[18px] text-[#262626] ">Categorie</mat-label>
+                <mat-form-field appearance="outline" class="w-full">
+                    <mat-select [placeholder]="'Scegli categoria'" class="w-full">
+                        <mat-option *ngFor="let food of ['foods' , 'ggv']" [value]="food">
+                            {{food}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="flex flex-col gap-2">
+                <mat-label class="text-sm font-poppins font-[600] leading-[18px] text-[#262626] ">Prezzo (#)</mat-label>
+                <div class="flex gap-2">
+                    <mat-form-field appearance="outline">
+                        <input matInput placeholder="Min" type="number">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <input matInput placeholder="Max" type="number">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="flex flex-col gap-2 border-solid px-2">
+                <mat-label class="text-sm font-poppins font-[600] leading-[18px] text-[#262626] ">Location</mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-select [placeholder]="'Toscana'" class="w-full">
+                        <mat-option *ngFor="let food of ['foods' , 'ggv']" [value]="food">
+                            {{food}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <mat-divider></mat-divider>
+
+
+
+            <div class="flex flex-col gap-2 border-solid">
+                <mat-label
+                    class="text-sm font-poppins font-[600] leading-[18px] text-[#262626] ">Inerzionista</mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-select [placeholder]="'Qualsiasi'" class="w-full">
+                        <mat-option *ngFor="let food of ['foods' , 'ggv']" [value]="food">
+                            {{food}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="flex flex-col gap-1 px-2">
+                <div class="font-poppins text-sm font-[600] text-[#262626] leading-[24px] tracking-[0.25%]">Tag</div>
+                <mat-chip-listbox>
+                    <mat-chip-option>Lorem ipsum</mat-chip-option>
+                    <mat-chip-option>Lorem</mat-chip-option>
+                    <mat-chip-option>Lorem ipsum</mat-chip-option>
+                    <mat-chip-option>Lorem ipsum</mat-chip-option>
+                    <mat-chip-option>Lorem</mat-chip-option>
+                </mat-chip-listbox>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="flex flex-col gap-6 w-full">
+            <div class="flex justify-between">
+                <div class="flex gap-4 items-center">
+                    <span class="font-poppins font-[600] text-[24px] leading-[36px] text-[#262626]  ">Annunci</span>
+                    <span class="text-[#2626262] font-[400] font-poppins text-[12px] leading-[18px] ">20 Risultati</span>
+                </div>
+
+                <mat-form-field appearance="outline" class="w-1/4">
+                    <mat-select [placeholder]="'Ordinamento: piu recente'" class="w-full">
+                        <mat-option *ngFor="let food of ['foods' , 'ggv']" [value]="food">
+                            {{food}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!--cards-->
+            <div class="rounded-2xl border border-solid border-[#E7E7E7] h-[269px] w-full"  *ngFor="let item of [1,2,3,4,5,6,7,8,98,0,0,0,0,0,0,8,7,7,6,6]" >
+                <div class="flex">
+                    <!--img--->
+                    <div
+                        class="h-[269px] pt-[16px] pl-[16px] w-[200px] rounded-l-2xl bg-cover bg-center bg-[url('assets/gallo-hem.jpeg')] border border-solid border-green-500">
+                        <div class="bg-[#B63A2A] rounded-[100px] px-[12px] w-[69px]">
+                            <span
+                                class="  font-poppins font-[600] text-[12px] leading-[18px] text-white ">Offerta</span>
+                        </div>
+                    </div>
+
+                    <!--content-->
+                    <div class="flex w-full justify-between p-2">
+                        <div class="w-[450px]">
+                            <div class="flex flex-col p-2 w-full gap-3">
+                                <div class="flex gap-4">
+                                    <span class="bg-[#FCEAD8] text-[#742A1A] rounded-[100px] px-[12px] py-[2px] ">Vendo</span>
+                                    <span class="bg-[#F1F1D6] text-[#4C4F25] rounded-[100px] px-[12px] py-[2px] ">Nuovo annuncio</span>
+                                </div>
+
+                                <div class="font-poppins font-[700]  text-[18px] leading-[27px] text-[#262626]">Gallo di Marans</div>
+
+                                <div class="font-poppins font-[400] text-[16px] leading-[24px] text-[#262626] ">
+                                    Lorem ipsum dolor sit amet consectetur. Velit euismod aliquet amet quis malesuada sem...
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col p-2 w-full gap-3">
+                                <div class="flex gap-10">
+                                    <div class="flex flex-col gap-2">
+                                        <div class="flex gap-2 items-center">
+                                            <mat-icon class="text-[#6D6D6D]">location_on</mat-icon>
+                                            <span class="font-poppins font-[400] text-sm  leading-[21px] text-[#6D6D6D]">Toscana</span>
+                                        </div>
+
+                                        <div class="flex gap-2 items-center">
+                                            <mat-icon class="text-[#6D6D6D]">location_on</mat-icon>
+                                            <span class="font-poppins font-[400] text-sm  leading-[21px] text-[#6D6D6D]">12 ore fa</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex gap-2 items-center">
+                                            <mat-icon class="text-[#6D6D6D]">location_on</mat-icon>
+                                            <span class="font-poppins font-[400] text-sm  leading-[21px] text-[#6D6D6D]">Vista rapida</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-10 items-center">
+                                    <span class="font-Looket font-[400] text-[24px] leading-[36px] text-[#CB4A1B] text-md p-2">38,00</span>
+                                    <span class="font-Looket text-[#5D5D5D] text-[18px] leading-[23.48px] font-[400] ">38,00</span>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        
+                        
+                        <div>
+                            <mat-icon class="text-[#CB4A1B]">favorite</mat-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+      
+        </div>
+
+    </div>
+
+
+
+</section>

@@ -14,13 +14,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { NgxMatInputTelComponent } from 'ngx-mat-input-tel';
+import { AnnunciComponent } from './annunci/annunci.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDividerModule} from '@angular/material/divider'
+import {MatRadioModule} from '@angular/material/radio';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroComponent,
     UserComponent,
-    TelIMputComponent
+    TelIMputComponent,
+    AnnunciComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,12 @@ import { NgxMatInputTelComponent } from 'ngx-mat-input-tel';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    NgxMatInputTelComponent
+    NgxMatInputTelComponent,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatDividerModule,
+    MatRadioModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
