@@ -21,6 +21,7 @@ import {MatDividerModule} from '@angular/material/divider'
 import {MatRadioModule} from '@angular/material/radio';
 import {MatChipsModule} from '@angular/material/chips';
 import { SigaloComponent } from './sigalo/sigalo.component';
+import { PaginaprofileComponent } from './paginaprofile/paginaprofile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SigaloComponent } from './sigalo/sigalo.component';
     UserComponent,
     TelIMputComponent,
     AnnunciComponent,
-    SigaloComponent
+    SigaloComponent,
+    PaginaprofileComponent
   ],
   imports: [
     BrowserModule,

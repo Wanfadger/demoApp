@@ -36,8 +36,10 @@
 
                     </div>
 
-                    <div class="flex h-[94px] gap-1">
-                        <img [src]="'../../assets/'+image" alt="" class="w-[94px] h-[94px] rounded-[6px]" *ngFor="let image of images;let index=index"
+                    <div class="flex h-[94px] gap-2">
+                        <img [src]="'../../assets/'+image" alt="" class="w-[94px] h-[94px] rounded-[6px] " 
+                        [ngClass]="{'ring-2 ring-pink-300':selectedIndex() == index}"
+                        *ngFor="let image of images;let index=index"
                         (click)="select(index)"
                         >
                     </div>
