@@ -143,9 +143,58 @@
             </div>
 
             <div class="rounded-[8px] border-[2px] border-[#CB4A1B] py-[8px] px-[24px] ">
-                <span
-                    class="text-looket font-[400] text-[24px] leading-[36px] text-center text-[#CB4A1B] ">Visualizza tutte le aziende</span>
+                <span class="text-looket font-[400] text-[24px] leading-[36px] text-center text-[#CB4A1B] ">Visualizza
+                    tutte le aziende</span>
             </div>
         </div>
+
+        <div class="flex gap-8 mt-4">
+            <!--card-->
+            <div class="flex flex-col shadow-sm rounded-[16px] border-[1px] border-[#E7E7E7]
+            w-[305px] h-[601px]
+          " *ngFor="let item of [1,2,3,4]">
+                <div class="h-[270px] w-[305px] rounded-t-[16px]">
+                    <img src="../../assets/marans.jpeg" alt="" class="h-full w-full rounded-t-[16px]">
+                </div>
+                <div class="flex flex-col gap-3 py-[16px] px-[24px]">
+                    <div class="flex items-center gap-2 text-[#146190] ">
+                        <span><mat-icon>verified</mat-icon></span>
+                        <span class="text-poppins font-[600] text-[12px] leading-[18px] ">Verificato</span>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <div class="text-poppins font-[700] text-[18px] leading-[27px] text-[#262626] ">Nome azienda </div>
+                        <div class="text-poppins font-[400] text-[16px] leading-[24px] text-[#262626]  ">Lorem ipsum
+                            dolor sit amet consectetur. Velit euismod...</div>
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+
+                        <div class="flex gap-2 text-[#6D6D6D]">
+                            <span><mat-icon>verified</mat-icon></span>
+                            <span class="text-poppins font-[400] text-[14px] leading-[21px] ">Luogo</span>
+                        </div>
+
+                        <div class="flex gap-2 text-[#6D6D6D]">
+                            <span><mat-icon>verified</mat-icon></span>
+                            <span class="text-poppins font-[400] text-[14px] leading-[21px] ">Settore</span>
+                        </div>
+
+                        <div class="flex gap-2 text-[#6D6D6D]">
+                            <span><mat-icon>verified</mat-icon></span>
+                            <span class="text-poppins font-[400] text-[14px] leading-[21px] ">Tipologia di
+                                prodotto</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-[16px] text-[#CB4A1B]">
+                        <span class="text-poppins font-[600] text-[14px] leading-[21px] ">Vai alla scheda</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
     </section>
 </div>
